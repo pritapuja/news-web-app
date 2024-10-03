@@ -10,7 +10,7 @@ function Navbar() {
     e.preventDefault();
     if (searchQuery) {
       navigate(`/search?query=${searchQuery}`);
-      setSearchQuery(""); // Clear the input after search
+      setSearchQuery(""); 
     }
   };
 

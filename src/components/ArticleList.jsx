@@ -25,7 +25,7 @@ export default function ArticleList({ query }) {
     }
   }, [query]);
 
-  // Fungsi untuk memeriksa apakah artikel sudah disimpan
+ 
   const isNewsSaved = (articleId) => {
     const savedNews = JSON.parse(localStorage.getItem("savedNews")) || [];
     return savedNews.some((news) => news._id === articleId);
@@ -36,11 +36,11 @@ export default function ArticleList({ query }) {
     savedNews.push(article);
     localStorage.setItem("savedNews", JSON.stringify(savedNews));
     
-    // Update articles state to trigger re-render
+   
     setArticles((prevArticles) =>
       prevArticles.map((art) => {
         if (art._id === article._id) {
-          return { ...art, saved: true }; // Add a saved property
+          return { ...art, saved: true }; 
         }
         return art;
       })
@@ -49,14 +49,14 @@ export default function ArticleList({ query }) {
 
   const unsaveNews = (articleId) => {
     let savedNews = JSON.parse(localStorage.getItem("savedNews")) || [];
-    savedNews = savedNews.filter((news) => news._id !== articleId); // Hapus berita berdasarkan _id
+    savedNews = savedNews.filter((news) => news._id !== articleId); 
     localStorage.setItem("savedNews", JSON.stringify(savedNews));
 
-    // Update articles state to trigger re-render
+    
     setArticles((prevArticles) =>
       prevArticles.map((art) => {
         if (art._id === articleId) {
-          return { ...art, saved: false }; // Update saved property
+          return { ...art, saved: false }; 
         }
         return art;
       })
@@ -78,13 +78,13 @@ export default function ArticleList({ query }) {
             multimedia,
           } = article;
 
-          // Ambil gambar pertama yang bertipe "image" dari multimedia
+          
           const imageUrl =
             multimedia && multimedia.length > 0
               ? `https://www.nytimes.com/${multimedia[0].url}`
-              : "news.jpg"; // Jika tidak ada gambar, gunakan gambar default
+              : "news.jpg"; 
 
-          const saved = isNewsSaved(_id); // Cek apakah berita sudah disimpan
+          const saved = isNewsSaved(_id); 
 
           return (
             <div className="col-md-4 mb-4" key={_id}>
@@ -96,7 +96,7 @@ export default function ArticleList({ query }) {
                   style={{
                     width: "100%",
                     height: "200px",
-                    objectFit: "cover", // Pangkas gambar agar sesuai
+                    objectFit: "cover",
                   }}
                 />
                 <div className="card-body">
@@ -113,7 +113,7 @@ export default function ArticleList({ query }) {
                     News Page
                   </a>
                   {saved ? (
-                    // Tombol Unsave jika artikel sudah disimpan
+                   
                     <button
                       type="button"
                       className="btn btn-danger"
@@ -122,13 +122,13 @@ export default function ArticleList({ query }) {
                       Unsave
                     </button>
                   ) : (
-                    // Tombol Save jika artikel belum disimpan
+                   
                     <button
                       type="button"
                       className="btn btn-primary"
                       onClick={() =>
                         saveNews({
-                          _id: _id, // Simpan _id untuk referensi saat unsave
+                          _id: _id, 
                           source: original,
                           title: main,
                           description: abstract,
@@ -149,7 +149,7 @@ export default function ArticleList({ query }) {
   );
 }
 
-// Adding PropTypes for validation
+
 ArticleList.propTypes = {
   query: PropTypes.string.isRequired,
 };
