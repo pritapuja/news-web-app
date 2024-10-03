@@ -30,7 +30,8 @@ const SavedNews = () => {
             <tr key={index}>
               <td>{news.source}</td>
               <td>
-                <a href={news.link} target="_blank" rel="noopener noreferrer">
+                <a href={news.link} target="_blank">
+                {/* <a href={news.link} target="_blank" rel="noopener noreferrer"> */}
                   {news.title}
                 </a>
               </td>
