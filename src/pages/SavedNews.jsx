@@ -11,7 +11,7 @@ const SavedNews = () => {
 
   
   if (savedNews.length === 0) {
-    return <p className="text-center mt-3">No news saved yet.</p>;
+    return <p className="text-center mt-3">No saved news available.</p>;
   }
 
   return (
