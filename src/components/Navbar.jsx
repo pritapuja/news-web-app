@@ -56,11 +56,11 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/covid-19"
+                <Link
                   className={`nav-link ${
                     location.pathname === "/covid-19" ? "active fw-semibold" : "text-muted"
                   }`}
-                  // to="/covid-19"
+                  to="/covid-19"
                 >
                   COVID-19
                 </Link>
